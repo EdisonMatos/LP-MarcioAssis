@@ -34,15 +34,14 @@ export default function FooterSocial({ LightMode, addres, obs }) {
                   <img
                     src={content.texts.navbar.logo.img}
                     alt={content.texts.navbar.logo.alt}
-                    // className="max-h-[88px] w-auto  p-[12px]"
-                    className="max-h-[88px] w-auto bg-white p-[12px]"
+                    className="max-h-[88px] w-auto  p-[12px]"
+                    // className="max-h-[88px] w-auto bg-white p-[12px]"
                   ></img>
                 </div>
               </MotionDivDownToUp>
               <MotionDivDownToUp>
                 <div className="flex full gap-x-[12px] items-center opacity-90">
                   <FaWhatsapp size={24} color={LightMode ? "black" : "white"} />
-
                   <a
                     href={whatsappContactLink}
                     target="_blank"

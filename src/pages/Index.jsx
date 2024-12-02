@@ -21,7 +21,7 @@ import BackToTopButton from "../components/interactives/BackToTopButton";
 export default function Index() {
   return (
     <div>
-      <Navbar LightMode={true} />
+      <Navbar LightMode={false} />
       <Hero />
       <Features modal={false} />
       <About modal={true} />
