@@ -118,6 +118,22 @@ export default function FooterSocial({ LightMode, addres, obs }) {
               <MotionDivDownToUp>
                 <p className="opacity-90">{content.texts.footer.footerText}</p>
               </MotionDivDownToUp>
+              <MotionDivDownToUp>
+                <p className="font-bold mt-[32px] mb-[16px]">
+                  Nos encontre no Google Maps
+                </p>
+                <div className="opacity-90">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31496.286939401998!2d-49.4966658!3d-16.6489271!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935e67f49e245171%3A0xe8acb6a48ae5cc5e!2sM%C3%A1rcio%20Assis%20Advogados!5e1!3m2!1spt-BR!2sbr!4v1733161783119!5m2!1spt-BR!2sbr"
+                    width="100%"
+                    height="350"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              </MotionDivDownToUp>
               {/* Botões de download */}
               {/* <p className="opacity-90">Baixe nosso app:</p>
               <div className="invert">
@@ -323,9 +339,7 @@ export default function FooterSocial({ LightMode, addres, obs }) {
               </MotionDivDownToUp>
             </div>
           </div>
-
           <div className="hidden w-[88%] max-w-[1110px] bg-secondary"></div>
-
           <div className="text-center w-full phone2:w-[90%] max-w-[1110px] flex flex-col mb-[48px] phone2:mb-[80px] tablet1:mb-[27px]">
             <p className="w-full opacity-75">
               {content.texts.footer.copyrightLine}
