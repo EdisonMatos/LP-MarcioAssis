@@ -334,7 +334,7 @@ const content = {
       },
       miniTag: "QUEM É O DR. MÁRCIO ASSIS",
       title: "Minha trajetória",
-      subtitle: "Experiência no Judiciário e compromisso com a excelênci",
+      subtitle: "Experiência no Judiciário e compromisso com a excelência",
       paragraph: (
         <div>
           Minha jornada no Direito começou em 2012, inspirada pelo legado do meu
