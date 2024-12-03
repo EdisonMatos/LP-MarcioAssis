@@ -117,7 +117,7 @@ const content = {
         </h1>
       ),
       subtitle:
-        "Com experiência no Tribunal de Justiça, ofereços defesa estratégica para proteger seus direitos Criminal e Cível.",
+        "Com experiência no Tribunal de Justiça, oferecemos defesa estratégica para proteger seus direitos nas áreas Criminal e Cível.",
       heroImg: heroImg,
       ctaButtonText: "Entre em contato",
       obsHero: {
