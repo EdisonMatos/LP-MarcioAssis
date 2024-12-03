@@ -56,7 +56,7 @@ import {
 const currentYear = new Date().getFullYear();
 
 export const infos = {
-  name: "Márcio Assis Advocacia",
+  name: "Márcio Assis Advogados",
   email: "contato", // Email desejado pelo cliente
   domain: "marcioassisadvogados.adv.br", // Sem "www"
   phone: {
@@ -81,7 +81,7 @@ export const infos = {
   ),
   obs: (
     <span className="italic">
-      Fora desse período é atendimento em regime de plantão. Favor consultar
+      Atendimento em regime de plantão após o horário comercial. Favor consultar
       disponibilidade.
     </span>
   ),
@@ -109,7 +109,7 @@ const content = {
       ctaButtonTextResponsive: "Contato",
     },
     hero: {
-      miniTag: "ADVOGADO CRIMINAL E CÍVEL EM TRINDADE - GO",
+      miniTag: "ADVOGADO CRIMINAL E CÍVEL EM TRINDADE-GO",
       title: (
         <h1 className="mb-[16px]">
           Transforme seu caso com uma
@@ -117,7 +117,7 @@ const content = {
         </h1>
       ),
       subtitle:
-        "Com experiência no TJ, ofereço defesa estratégica para proteger seus direitos Criminal e Cível.",
+        "Com experiência no Tribunal de Justiça, ofereços defesa estratégica para proteger seus direitos Criminal e Cível.",
       heroImg: heroImg,
       ctaButtonText: "Entre em contato",
       obsHero: {
@@ -174,7 +174,13 @@ const content = {
       card1: {
         img: featuresImg1,
         title: "Direito Criminal",
-        subtitle: "Defesa em acusações criminais e assistência em inquéritos.",
+        subtitle: (
+          <p>
+            Defesa em inquéritos policiais, processos criminais,{" "}
+            <span className="italic"> habeas corpus</span> e nos Tribunais
+            Superiores.
+          </p>
+        ),
         description: (
           <div>
             A Definir <br />
@@ -208,7 +214,8 @@ const content = {
       card2: {
         img: featuresImg2,
         title: "Direito de Família e Sucessões",
-        subtitle: "Divórcios, guarda de filhos, partilhas e inventários.",
+        subtitle:
+          "Divórcio, partilhas, guardas de filhos, pensão alimentícia e inventários.",
         description: (
           <div>
             A Definir <br />
@@ -333,43 +340,48 @@ const content = {
         alt: "Imagem profissional de escritório",
       },
       miniTag: "QUEM É O DR. MÁRCIO ASSIS",
-      title: "Minha trajetória",
-      subtitle: "Experiência no Judiciário e compromisso com a excelência",
+      title: "Sua trajetória",
+      subtitle:
+        "Experiência no Poder Judiciário e compromisso com a excelência.",
       paragraph: (
         <div>
-          Minha jornada no Direito começou em 2012, inspirada pelo legado do meu
-          falecido pai, um policial militar, e pela minha paixão por leis,
-          especialmente na área criminal.
+          Sua jornada no Direito começou em 2012, inspirada pelo legado de seu
+          falecido pai, um policial militar, e sua paixão por leis desde a
+          infância, especialmente na área criminal.
           <br />
-          Em 2014, decidi seguir esse sonho e me dediquei ao estágio no Tribunal
-          de Justiça de Goiás, onde atuei em uma Vara Criminal e, com muito
-          esforço, fui promovido a assessor de juíza titular.
+          Em 2014, Márcio decidiu seguir esse sonho e se dedicar ao estágio no
+          Tribunal de Justiça do Estado de Goiás, onde atuou em uma Vara
+          Criminal. Com muito esforço, foi promovido a assessor de juiz de
+          direito.
         </div>
       ),
       buttonModalLabelAbout: "Continuar lendo",
       modal: (
         <p>
-          Minha jornada no Direito começou em 2012, inspirada pelo legado do meu
-          falecido pai, um policial militar, e pela minha paixão por leis,
-          especialmente na área criminal.
+          Sua jornada no Direito começou em 2012, inspirada pelo legado de seu
+          falecido pai, um policial militar, e sua paixão por leis desde a
+          infância, especialmente na área criminal.
           <br />
           <br />
-          Em 2014, decidi seguir esse sonho e me dediquei ao estágio no Tribunal
-          de Justiça de Goiás, onde atuei em uma Vara Criminal e, com muito
-          esforço, fui promovido a assessor de juíza titular.
+          Em 2014, Márcio decidiu seguir esse sonho e se dedicar ao estágio no
+          Tribunal de Justiça do Estado de Goiás, onde atuou em uma Vara
+          Criminal. Com muito esforço, foi promovido a assessor de juiz de
+          direito.
           <br />
           <br />
           Formado em 2017 pelo Instituto Aphonsiano de Ensino Superior, uma das
-          melhores faculdades de Direito do estado, adquiri uma sólida base
-          acadêmica. Até 2021, minha experiência no Judiciário incluiu tanto a
-          área criminal quanto o Direito Cível, o que me preparou para um novo
-          desafio: iniciar minha carreira na advocacia.
+          melhores faculdades de Direito do estado, adquiriu uma sólida base
+          acadêmica. Até 2021, sua experiência no Judiciário incluiu tanto a
+          área criminal quanto o Direito Cível. Isso, por consequência, o
+          preparou para um novo desafio: iniciar sua carreira jurídica na
+          advocacia.
           <br />
           <br />
-          Hoje, meu compromisso é oferecer uma defesa de excelência, pautada na
-          ética, dedicação e no olhar técnico de quem já esteve do outro lado do
-          Direito. Meu objetivo é garantir aos meus clientes um atendimento à
-          altura das mais exigentes expectativas do Judiciário.
+          Hoje, seu compromisso é oferecer uma defesa de excelência, pautada na
+          ética, dedicação e no olhar técnico de quem já atuou sob outra
+          perspectiva. Seu objetivo é garantir aos seus clientes um atendimento
+          humanizado e uma atuação técnica, dentro daquilo que o ordenamento
+          jurídico oferece, para que eles alcancem suas pretensões.
           <br />
           <br />
         </p>
@@ -383,9 +395,9 @@ const content = {
           alt: `Foto do Instagram do ${infos.name}`,
         },
         miniTag: "MANTENHA-SE INFORMADO",
-        title: "Siga-me nas redes sociais!",
+        title: "Siga-nos nas redes sociais!",
         subtitle:
-          "⚖️ Quer ficar por dentro das novidades do mundo jurídico? Siga Márcio Assis Advocacia no Instagram e TikTok!",
+          "⚖️ Quer ficar por dentro das novidades do mundo jurídico? Siga Márcio Assis Advogados no Instagram e TikTok!",
         paragraph: (
           <p>
             Fique por dentro do universo jurídico! Nas nossas redes, você
