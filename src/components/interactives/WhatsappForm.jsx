@@ -220,7 +220,7 @@ const WhatsappForm = () => {
               id="uf"
               value={uf}
               onChange={handleUfChange} // Alterado para usar a função handleUfChange
-              placeholder="UF"
+              placeholder="Cidade e Estado"
               required 
             />
           </div>
