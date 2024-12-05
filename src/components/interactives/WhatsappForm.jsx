@@ -109,13 +109,13 @@ const WhatsappForm = () => {
       return;
     }
 
-    const numeroWhatsapp = `${content.texts.links.ctaWhatsapp}`;
-    const mensagemWhatsapp = `Nome: ${name}\nTelefone: ${phone}\nEmail: ${email}\nMensagem: ${message}`;
-    const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(
-      mensagemWhatsapp
-    )}`;
+    // const numeroWhatsapp = `${content.texts.links.ctaWhatsapp}`;
+    // const mensagemWhatsapp = `Nome: ${name}\nTelefone: ${phone}\nEmail: ${email}\nMensagem: ${message}`;
+    // const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(
+    //   mensagemWhatsapp
+    // )}`;
 
-    window.open(linkWhatsapp, "_blank");
+    // window.open(linkWhatsapp, "_blank");
   };
 
   const validateName = (name) => {
