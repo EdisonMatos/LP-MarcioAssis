@@ -58,6 +58,7 @@ const WhatsappForm = () => {
       validationErrors.email =
         "O formato do email digitado é inválido. Verifique.";
     }
+
     if (!validateUf(uf)) {
       validationErrors.uf = "O campo UF é obrigatório..";
     }
