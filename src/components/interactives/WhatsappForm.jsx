@@ -58,7 +58,7 @@ const WhatsappForm = () => {
         "O formato do email digitado é inválido. Verifique.";
     }
     if (!validateUf(uf)) {
-      validationErrors.uf = "O campo UF é obrigatório.";
+      validationErrors.uf = "O campo UF é obrigatório..";
     }
 
     if (!validateMessage(message)) {
@@ -73,21 +73,35 @@ const WhatsappForm = () => {
     // Definir os parâmetros para o envio do email
     const templateParams = {
       to_name: name,
-      nome: name,
+      name: name,
       phone: phone,
       email: email,
+      uf: uf,
       to_email: email, // Agora o email do usuário
+      message: message,
     };
 
     try {
       // Enviar o e-mail usando o EmailJS
       const response = await emailjs.send(
-        "service_uf0dao9", // ID do seu serviço
-        "template_qlytqdl", // ID do seu template
+        "service_yhoairx", // ID do seu serviço
+        "template_0lbs3xa", // ID do seu template
         templateParams,
-        "EYzqc9Ig48Qet4LTh" // Sua chave pública
+        "XdBxPEkWTKBlVzPlO" // Sua chave pública
       );
-      console.log("Mensagem enviada com sucesso:", response.status, response.text);
+      console.log(
+        "Mensagem enviada com sucesso:",
+        response.status,
+        response.text
+      );
+      // Limpar os campos
+      setName("");
+      setPhone("");
+      setEmail("");
+      setUf("");
+      setMessage("");
+      
+      alert("E-mail enviado com sucesso! Recebemos seu cadastro.");
     } catch (error) {
       console.error("Erro ao enviar o e-mail:", error);
       alert("Houve um erro ao enviar o e-mail. Tente novamente.");
@@ -122,7 +136,7 @@ const WhatsappForm = () => {
   const validateMessage = (message) => !!message;
 
   const validateUf = (uf) => {
-    return uf.trim().length >= 2; // Certifique-se de que a UF tem pelo menos 2 caracteres
+    return uf.trim().length >= 5; // Certifique-se de que a UF tem pelo menos 2 caracteres
   };
 
   const formatPhoneNumber = (phoneNumber) => {
@@ -221,7 +235,8 @@ const WhatsappForm = () => {
               value={uf}
               onChange={handleUfChange} // Alterado para usar a função handleUfChange
               placeholder="Cidade e Estado"
-              required 
+              minLength={5}
+              required
             />
           </div>
           {errors.uf && (
