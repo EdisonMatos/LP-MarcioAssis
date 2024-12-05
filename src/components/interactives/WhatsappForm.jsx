@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import WhatsAppIcon from "../../assets/importAssets/WhatsAppIcon.webp";
 import { CiUser, CiPhone, CiMail, CiGlobe, CiChat1 } from "react-icons/ci";
@@ -84,10 +85,10 @@ const WhatsappForm = () => {
     try {
       // Enviar o e-mail usando o EmailJS
       const response = await emailjs.send(
-        "service_yhoairx", // ID do seu serviço
-        "template_0lbs3xa", // ID do seu template
+        "service_79yzhx9", // ID do seu serviço
+        "template_mhpelei", // ID do seu template
         templateParams,
-        "XdBxPEkWTKBlVzPlO" // Sua chave pública
+        "HhY_ngFZdJ35Ugc0H" // Sua chave pública
       );
       console.log(
         "Mensagem enviada com sucesso:",
@@ -100,7 +101,7 @@ const WhatsappForm = () => {
       setEmail("");
       setUf("");
       setMessage("");
-      
+
       alert("E-mail enviado com sucesso! Recebemos seu cadastro.");
     } catch (error) {
       console.error("Erro ao enviar o e-mail:", error);
