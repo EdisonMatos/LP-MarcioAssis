@@ -159,7 +159,7 @@ const WhatsappForm = () => {
       <div className="w-full text-paragraph3 phone3:text-paragraph4">
         <h1 className="w-full mb-2 font-medium">Fale conosco</h1>
 
-        <div className="mb-5">
+        <div className="mb-2">
           <div className="flex mb-4 text-gray-500">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiUser />
@@ -181,7 +181,7 @@ const WhatsappForm = () => {
           )}
         </div>
 
-        <div className="mb-5">
+        <div className="mb-2">
           <div className="flex mb-4 text-gray-500">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiPhone />
@@ -203,7 +203,7 @@ const WhatsappForm = () => {
           )}
         </div>
 
-        <div className="mb-5">
+        <div className="mb-2">
           <div className="flex mb-4 text-gray-500">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiMail />
@@ -225,7 +225,7 @@ const WhatsappForm = () => {
           )}
         </div>
 
-        <div className="mb-5">
+        <div className="mb-2">
           <div className="flex mb-4 text-gray-500">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiGlobe />
@@ -248,13 +248,13 @@ const WhatsappForm = () => {
           )}
         </div>
 
-        <div className="mb-5">
+        <div className="mb-2">
           <div className="flex mb-4 text-gray-500">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiChat1 />
             </div>
             <textarea
-              className="w-full px-1 py-2 border-0 rounded-none rounded-tr-none-md rounded-br-none-md"
+              className="w-full px-1 py- border-0 rounded-none rounded-tr-none-md rounded-br-none-md"
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -271,14 +271,14 @@ const WhatsappForm = () => {
 
         <button
           type="button"
-          className="flex items-center w-full px-4 py-2 font-medium text-white bg-[#075E54] rounded-lg text-title1 h-14 phone2:h-14 phone3:h-18 hover:bg-secondary hover:text-white transition-all duration-300"
+          className="flex items-center w-full font-medium text-white bg-[#075E54] rounded-lg text-title1 h-12 phone2:h-14 phone3:h-18 hover:bg-secondary hover:text-white transition-all duration-300"
           onClick={sendToWhatsapp}
           disabled={isSubmitting}
         >
           <div className="flex items-center justify-center w-full">
             <img
               src={WhatsAppIcon}
-              className="w-10 h-10 mr-2"
+              className="w-8 h-8 mr-2"
               alt="WhatsApp Icon"
             />
             <p className="whitespace-nowrap text-paragraph4 phone1:text-paragraph5 phone2:text-title2 tablet1:text-title1 px-[3%]">

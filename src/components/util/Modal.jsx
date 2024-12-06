@@ -24,13 +24,13 @@ export default function Modal({ isOpen, setCloseModal }) {
           className="relative grid items-center justify-center bg-[#ece5dd] shadow-2xl rounded-xl"
           onClick={stopPropagation}
         >
-          <div className="bg-[#075E54] h-10 rounded-t-xl flex justify-end items-center px-2">
+          <div className="bg-[#075E54] h-8 phone2:h-10 rounded-t-xl flex justify-end items-center px-2">
             <div className="text-zinc-100">
               <X onClick={closeModal} />
             </div>
           </div>
 
-          <div className="p-4 m-2 text-left text-black">
+          <div className="p-2 m-2 text-left text-black">
             <WhatsappForm />
           </div>
         </button>
