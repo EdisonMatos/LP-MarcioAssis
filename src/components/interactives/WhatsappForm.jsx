@@ -12,6 +12,7 @@ const WhatsappForm = () => {
   const [uf, setUf] = useState("");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const capitalizeFirstLetter = (str) => {
     return str
@@ -42,6 +43,9 @@ const WhatsappForm = () => {
   };
 
   const sendToWhatsapp = async () => {
+    // Definir isSubmitting como true ao iniciar o envio
+    setIsSubmitting(true);
+
     const validationErrors = {};
 
     if (!validateName(name)) {
@@ -60,7 +64,7 @@ const WhatsappForm = () => {
     }
 
     if (!validateUf(uf)) {
-      validationErrors.uf = "O campo UF é obrigatório..";
+      validationErrors.uf = "O campo UF é obrigatório.";
     }
 
     if (!validateMessage(message)) {
@@ -69,6 +73,7 @@ const WhatsappForm = () => {
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      setIsSubmitting(false); // Garantir que o botão volte ao estado normal se houver erro
       return;
     }
 
@@ -96,27 +101,21 @@ const WhatsappForm = () => {
         response.status,
         response.text
       );
+
       // Limpar os campos
       setName("");
       setPhone("");
       setEmail("");
       setUf("");
       setMessage("");
+      setIsSubmitting(false); // Garantir que o botão volte ao estado normal
 
       alert("E-mail enviado com sucesso! Recebemos seu cadastro.");
     } catch (error) {
       console.error("Erro ao enviar o e-mail:", error);
       alert("Houve um erro ao enviar o e-mail. Tente novamente.");
-      return;
+      setIsSubmitting(false); // Garantir que o botão volte ao estado normal
     }
-
-    // const numeroWhatsapp = `${content.texts.links.ctaWhatsapp}`;
-    // const mensagemWhatsapp = `Nome: ${name}\nTelefone: ${phone}\nEmail: ${email}\nMensagem: ${message}`;
-    // const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(
-    //   mensagemWhatsapp
-    // )}`;
-
-    // window.open(linkWhatsapp, "_blank");
   };
 
   const validateName = (name) => {
@@ -250,16 +249,15 @@ const WhatsappForm = () => {
 
         <div className="mb-5">
           <div className="flex mb-4 text-gray-500">
-            <div className="flex justify-center w-12 px-1 bg-white">
-              <CiChat1 className="h-11" />
+            <div className="flex items-center justify-center w-12 px-1 bg-white">
+              <CiChat1 />
             </div>
             <textarea
               className="w-full px-1 py-2 border-0 rounded-none rounded-tr-none-md rounded-br-none-md"
-              type="text"
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Conte-nos sua demanda"
+              placeholder="Mensagem"
               required
             />
           </div>
@@ -270,23 +268,23 @@ const WhatsappForm = () => {
           )}
         </div>
 
-        <div className="flex justify-center">
-          <button
-            className="flex items-center w-full px-4 py-2 font-medium text-white bg-[#075E54] rounded-lg text-title1 h-14 phone2:h-14 phone3:h18 hover:bg-secondary hover:text-white transition-all duration-300"
-            onClick={sendToWhatsapp}
-          >
-            <div className="flex items-center justify-center w-full">
-              <img
-                src={WhatsAppIcon}
-                className="w-10 h-10 mr-2"
-                alt="WhatsApp Icon"
-              />
-              <p className="whitespace-nowrap text-paragraph4 phone1:text-paragraph5 phone2:text-title2 tablet1:text-title1 px-[3%]">
-                Enviar mensagem
-              </p>
-            </div>
-          </button>
-        </div>
+        <button
+          type="button"
+          className="flex items-center w-full px-4 py-2 font-medium text-white bg-[#075E54] rounded-lg text-title1 h-14 phone2:h-14 phone3:h-18 hover:bg-secondary hover:text-white transition-all duration-300"
+          onClick={sendToWhatsapp}
+          disabled={isSubmitting}
+        >
+          <div className="flex items-center justify-center w-full">
+            <img
+              src={WhatsAppIcon}
+              className="w-10 h-10 mr-2"
+              alt="WhatsApp Icon"
+            />
+            <p className="whitespace-nowrap text-paragraph4 phone1:text-paragraph5 phone2:text-title2 tablet1:text-title1 px-[3%]">
+              {isSubmitting ? "Enviando..." : "Enviar mensagem"}
+            </p>
+          </div>
+        </button>
       </div>
     </div>
   );
