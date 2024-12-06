@@ -172,6 +172,7 @@ const WhatsappForm = () => {
               onChange={handleNameChange}
               placeholder="Nome"
               required
+              minLength={5}
             />
           </div>
           {errors.name && (
@@ -268,7 +269,6 @@ const WhatsappForm = () => {
             </p>
           )}
         </div>
-
         <button
           type="button"
           className="flex items-center w-full font-medium text-white bg-[#075E54] rounded-lg text-title1 h-12 phone2:h-14 phone3:h-18 hover:bg-secondary hover:text-white transition-all duration-300"
