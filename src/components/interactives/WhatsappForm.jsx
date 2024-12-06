@@ -111,6 +111,7 @@ const WhatsappForm = () => {
       setIsSubmitting(false); // Garantir que o botão volte ao estado normal
 
       alert("E-mail enviado com sucesso! Recebemos seu cadastro.");
+      window.location.reload();
     } catch (error) {
       console.error("Erro ao enviar o e-mail:", error);
       alert("Houve um erro ao enviar o e-mail. Tente novamente.");
