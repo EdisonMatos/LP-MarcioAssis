@@ -377,6 +377,17 @@ const content = {
           advocacia.
           <br />
           <br />
+          Em 2024, a Ordem dos Advogados do Brasil - Seção Goiás concedeu a
+          Láurea de Agradecimento em reconhecimento à sua atuação voluntária e à
+          dedicação às causas democráticas e ao direito de defesa.
+          <br />
+          <br />
+          No mesmo ano, recebeu a honraria do Mérito Legislativo, concedida pela
+          Assembleia Legislativa do Estado de Goiás, em homenagem ao Dia do
+          Advogado Criminalista e em reconhecimento aos relevantes serviços
+          prestados ao Estado de Goiás.
+          <br />
+          <br />
           Hoje, seu compromisso é oferecer uma defesa de excelência, pautada na
           ética, dedicação e no olhar técnico de quem já atuou sob outra
           perspectiva. Seu objetivo é garantir aos seus clientes um atendimento

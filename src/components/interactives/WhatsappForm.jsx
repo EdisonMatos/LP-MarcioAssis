@@ -64,7 +64,7 @@ const WhatsappForm = () => {
     }
 
     if (!validateUf(uf)) {
-      validationErrors.uf = "O campo UF é obrigatório.";
+      validationErrors.uf = "O campo cidade-UF é obrigatório.";
     }
 
     if (!validateMessage(message)) {
@@ -156,8 +156,8 @@ const WhatsappForm = () => {
 
   return (
     <div>
-      <div className="text-paragraph3 phone3:text-paragraph4 w-full">
-        <h1 className="w-full mb-2 font-medium">Entre em contato agora</h1>
+      <div className="w-full text-paragraph3 phone3:text-paragraph4">
+        <h1 className="w-full mb-2 font-medium">Fale conosco</h1>
 
         <div className="mb-5">
           <div className="flex mb-4 text-gray-500">
@@ -282,7 +282,7 @@ const WhatsappForm = () => {
               alt="WhatsApp Icon"
             />
             <p className="whitespace-nowrap text-paragraph4 phone1:text-paragraph5 phone2:text-title2 tablet1:text-title1 px-[3%]">
-              {isSubmitting ? "Enviando..." : "Enviar mensagem"}
+              {isSubmitting ? "Enviando..." : "Enviar"}
             </p>
           </div>
         </button>
