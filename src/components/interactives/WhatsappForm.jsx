@@ -1,13 +1,17 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import WhatsAppIcon from "../../assets/importAssets/WhatsAppIcon.webp";
-import { CiUser, CiPhone, CiMail, CiChat1 } from "react-icons/ci";
+import { CiUser, CiPhone, CiMail, CiGlobe, CiChat1 } from "react-icons/ci";
+import emailjs from "@emailjs/browser";
 
 const WhatsappForm = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [uf, setUf] = useState("");
   const [message, setMessage] = useState("");
-  const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const capitalizeFirstLetter = (str) => {
     return str
@@ -17,130 +21,167 @@ const WhatsappForm = () => {
       .join(" ");
   };
 
-  const sendToWhatsapp = () => {
+  const handleNameChange = (e) => {
+    const input = e.target.value;
+    const onlyLetters = input.replace(/[^a-zA-ZÀ-ÿ\s]/g, ""); // Permite apenas letras e espaços
+    setName(capitalizeFirstLetter(onlyLetters));
+  };
+
+  const handleUfChange = (e) => {
+    const input = e.target.value;
+    const onlyLetters = input.replace(/[^a-zA-ZÀ-ÿ\s-]/g, ""); // Permite apenas letras, espaços e hífens
+    setUf(capitalizeFirstLetter(onlyLetters));
+  };
+
+  const handlePhoneChange = (e) => {
+    const input = e.target.value.replace(/[^\d]/g, ""); // Remove tudo que não for número
+    setPhone(formatPhoneNumber(input));
+  };
+
+  const sendToWhatsapp = async () => {
+    setIsSubmitting(true);
+
     const validationErrors = {};
 
     if (!validateName(name)) {
-      validationErrors.name = "O campo nome é obrigatório";
+      validationErrors.name = "Nome inválido.";
     }
 
     if (!validatePhone(phone)) {
-      validationErrors.phone = "O campo telefone é obrigatório";
+      validationErrors.phone = "Número inválido.";
     }
 
     if (!email) {
-      validationErrors.email = "O campo email é obrigatório";
+      validationErrors.email = "O campo email é obrigatório.";
     } else if (!validateEmail(email)) {
       validationErrors.email =
-        "O formato do email digitado é inválido. Verifique.";
+        "E-mail inválido.";
+    }
+
+    if (!validateUf(uf)) {
+      validationErrors.uf = "Cidade  e Estado inválido.";
     }
 
     if (!validateMessage(message)) {
-      validationErrors.message = "O campo mensagem é obrigatório";
+      validationErrors.message = "O campo mensagem é obrigatório.";
     }
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      setIsSubmitting(false);
       return;
     }
-    const numeroWhatsapp = `${content.texts.links.ctaWhatsapp}`;
 
+    const templateParams = {
+      to_name: name,
+      name,
+      phone,
+      email,
+      uf,
+      to_email: email,
+      message,
+    };
 
-    const mensagemWhatsapp = `Nome: ${name} \nTelefone: ${phone} \nEmail: ${email} \nMensagem: ${message}`;
+    try {
+      const response = await emailjs.send(
+        "service_79yzhx9",
+        "template_mhpelei",
+        templateParams,
+        "HhY_ngFZdJ35Ugc0H"
+      );
+      console.log(
+        "Mensagem enviada com sucesso:",
+        response.status,
+        response.text
+      );
 
-    const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(
-      mensagemWhatsapp
-    )}`;
-
-    window.open(linkWhatsapp, "_blank");
+      setName("");
+      setPhone("");
+      setEmail("");
+      setUf("");
+      setMessage("");
+      setIsSubmitting(false);
+      alert(
+        "Recebemos os seus dados com sucesso! Em breve nossa equipe entrará em contato. Obrigado!"
+      );
+      window.location.reload();
+    } catch (error) {
+      console.error("Erro ao enviar o e-mail:", error);
+      alert("Houve um erro ao enviar o e-mail. Tente novamente.");
+      setIsSubmitting(false);
+    }
   };
 
-  const validateName = (name) => !!name;
+  const validateName = (name) => {
+    const namePattern = /^[a-zA-ZÀ-ÿ\s]{5,}$/; // Permite pelo menos 5 caracteres (letras e espaços)
+    return namePattern.test(name.trim());
+  };
 
   const validatePhone = (phone) => {
-    console.log("Validating phone:", phone);
-    const phoneNumberPattern = /^[\d()-\s]+$/;
-    const cleanedPhone = phone.replace(/[^\d]/g, "");
-    console.log("Cleaned phone:", cleanedPhone);
-    console.log("Phone length:", cleanedPhone.length);
-    const isValid =
-      phoneNumberPattern.test(phone) && cleanedPhone.length === 11;
-    return isValid;
+    const cleanedPhone = phone.replace(/\D/g, ""); // Remove caracteres não numéricos
+    return cleanedPhone.length >= 10; // Pelo menos 10 dígitos
   };
 
   const validateEmail = (email) => {
-    const emailPattern =
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.com)?$/;
-    if (
-      !email.includes("@") &&
-      !email.includes(".com") &&
-      !email.includes(".com.br")
-    ) {
-      return false;
-    }
-    return emailPattern.test(email);
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailPattern.test(email.trim());
   };
 
   const validateMessage = (message) => !!message;
 
-  const formatPhoneNumber = (phoneNumber) => {
-    let cleaned = phoneNumber.replace(/\D/g, "");
-    let formatted = cleaned.replace(
-      /^(\d{2})(\d{1,5})?(\d{1,4})?/,
-      (match, p1, p2, p3) => {
-        let part1 = p1 ? `(${p1}` : "";
-        let part2 = p2 ? `) ${p2}` : "";
-        let part3 = p3 ? `-${p3}` : "";
-        return `${part1}${part2}${part3}`;
-      }
-    );
-
-    return formatted;
+  const validateUf = (uf) => {
+    return uf.trim().length >= 5; // Requer ao menos 5 caracteres para Cidade e Estado
   };
 
-  const handlePhoneChange = (e) => {
-    let input = e.target.value.replace(/[^\d()-\s]/g, "");
-    let formattedPhone = formatPhoneNumber(input);
-    if (formattedPhone.length <= 15) {
-      setPhone(formattedPhone);
+  const formatPhoneNumber = (phoneNumber) => {
+    let cleaned = phoneNumber.replace(/\D/g, ""); // Remove tudo que não for número
+
+    if (cleaned.length > 11) cleaned = cleaned.slice(0, 11); // Limita a 11 dígitos
+
+    // Formatação dinâmica conforme o número é digitado
+    if (cleaned.length <= 2) return `(${cleaned}`;
+    if (cleaned.length <= 6)
+      return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2)}`;
+    if (cleaned.length <= 10) {
+      return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 6)}-${cleaned.slice(
+        6
+      )}`;
     }
+    return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 7)}-${cleaned.slice(
+      7
+    )}`;
   };
 
   return (
     <div>
-      <div className=" text-paragraph3 phone3:text-paragraph4 w-full">
-        <h1 className="w-full mb-2 font-medium ">
-          Entre em contato agora
-        </h1>
-        <div className="mb-5">
-          <div className="flex mb-4 text-gray-500">
-            <div className="flex items-center justify-center w-12 px-1 bg-white ">
+      <div className="w-full text-paragraph3 phone3:text-paragraph4">
+        <h1 className="w-full mb-2 font-medium">Fale conosco</h1>
+        {/* Nome */}
+        <div className="mb-2">
+          <div className="flex mb-2 tablet1:mb-3 text-gray-500">
+            <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiUser />
             </div>
             <input
-              className="w-full px-1 py-2 border-0 rounded-none rounded-tr-none-md rounded-br-none-md"
+              className="w-full px-1 py-2 border-0 rounded-none"
               type="text"
               id="name"
               value={name}
-              onChange={(e) => setName(capitalizeFirstLetter(e.target.value))}
+              onChange={handleNameChange}
               placeholder="Nome"
               required
             />
           </div>
-          {errors.name && (
-            <p className="-mt-2 -mb-1 text-red-500 text-paragraph3">
-              {errors.name}
-            </p>
-          )}
+          {errors.name && <p className="text-red-500">{errors.name}</p>}
         </div>
-
-        <div className="mb-5">
-          <div className="flex mb-4 text-gray-500">
-            <div className="flex items-center justify-center w-12 px-1 bg-white ">
+        {/* Telefone */}
+        <div className="mb-2">
+          <div className="flex mb-2 tablet1:mb-3 text-gray-500">
+            <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiPhone />
             </div>
             <input
-              className="w-full px-1 py-2 border-0 rounded-none rounded-tr-none-md rounded-br-none-md"
+              className="w-full px-1 py-2 border-0 rounded-none"
               type="tel"
               id="phone"
               value={phone}
@@ -149,20 +190,16 @@ const WhatsappForm = () => {
               required
             />
           </div>
-          {errors.phone && (
-            <p className="-mt-2 -mb-1 text-red-500 text-paragraph3">
-              {errors.phone}
-            </p>
-          )}
+          {errors.phone && <p className="text-red-500">{errors.phone}</p>}
         </div>
-
-        <div className="mb-5">
-          <div className="flex mb-4 text-gray-500">
-            <div className="flex items-center justify-center w-12 px-1 bg-white ">
+        {/* Email */}
+        <div className="mb-2">
+          <div className="flex mb-2 tablet1:mb-3 text-gray-500">
+            <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiMail />
             </div>
             <input
-              className="w-full px-1 py-2 border-0 rounded-none rounded-tr-none-md rounded-br-none-md"
+              className="w-full px-1 py-2 border-0 rounded-none"
               type="email"
               id="email"
               value={email}
@@ -171,26 +208,34 @@ const WhatsappForm = () => {
               required
             />
           </div>
-          {errors.email && !errors.email.includes("@") && (
-            <p className="-mt-2 -mb-1 text-red-500 text-paragraph3">
-              {errors.email}
-            </p>
-          )}
-          {errors.email?.includes("@") && (
-            <p className="-mt-2 -mb-1 text-red-500 text-paragraph3">
-              {errors.email}
-            </p>
-          )}
+          {errors.email && <p className="text-red-500">{errors.email}</p>}
         </div>
-
-        <div className="mb-5">
-          <div className="flex mb-4 text-gray-500">
-            <div className="flex justify-center w-12 px-1 bg-white ">
-              <CiChat1 className="h-11" />
+        {/* Cidade/Estado */}
+        <div className="mb-2">
+          <div className="flex mb-2 tablet1:mb-3 text-gray-500">
+            <div className="flex items-center justify-center w-12 px-1 bg-white">
+              <CiGlobe />
+            </div>
+            <input
+              className="w-full px-1 py-2 border-0 rounded-none"
+              type="text"
+              id="uf"
+              value={uf}
+              onChange={handleUfChange}
+              placeholder="Cidade e Estado"
+              required
+            />
+          </div>
+          {errors.uf && <p className="text-red-500">{errors.uf}</p>}
+        </div>
+        {/* Mensagem */}
+        <div className="mb-2">
+          <div className="flex mb-2 tablet1:mb-3 text-gray-500">
+            <div className="flex items-center justify-center w-12 px-1 bg-white">
+              <CiChat1 />
             </div>
             <textarea
-              className="w-full px-1 py-2 border-0 rounded-none rounded-tr-none-md rounded-br-none-md"
-              type="text"
+              className="w-full px-1 py-0 border-0 rounded-none"
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -198,30 +243,24 @@ const WhatsappForm = () => {
               required
             />
           </div>
-          {errors.message && (
-            <p className="-mt-2 -mb-1 text-red-500 text-paragraph3">
-              {errors.message}
-            </p>
-          )}
+          {errors.message && <p className="text-red-500">{errors.message}</p>}
         </div>
-
-        <div className="flex justify-center">
-          <button
-            className="flex items-center w-full px-4 py-2 font-medium text-white bg-[#075E54] rounded-lg text-title1 h-14 phone2:h-14 phone3:h18 hover:bg-secondary hover:text-white transition"
-            onClick={sendToWhatsapp}
-          >
-            <div className="flex items-center justify-center w-full">
-              <img
-                src={WhatsAppIcon}
-                className="w-10 h-10 mr-2"
-                alt="WhatsApp Icon"
-              />
-              <p className="whitespace-nowrap text-paragraph4 phone1:text-paragraph5 phone2:text-title2 tablet1:text-title1 px-[3%] ">
-                Enviar mensagem
-              </p>
-            </div>
-          </button>
-        </div>
+        {/* Botão */}
+        <button
+          type="button"
+          className="flex items-center w-full font-medium text-white bg-[#075E54] rounded-lg h-10 phone2:h-12 hover:bg-secondary"
+          onClick={sendToWhatsapp}
+          disabled={isSubmitting}
+        >
+          <div className="flex items-center justify-center w-full">
+            <img
+              src={WhatsAppIcon}
+              className="w-6 h-6 phone2:w-8 phone2:h-8 mr-2"
+              alt="WhatsApp Icon"
+            />
+            <p>{isSubmitting ? "Enviando..." : "Enviar mensagem"}</p>
+          </div>
+        </button>
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ export default function Index() {
       <Steps />
       <Faq />
       <FooterSocial obs={true} addres={true} />
-      <FloatingWhatsappButton />
+      <FloatingWhatsappButton buttonType="form" />
       <BackToTopButton />
     </div>
   );
