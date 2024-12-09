@@ -43,23 +43,29 @@ const WhatsappForm = () => {
 
     const validationErrors = {};
 
-    if (!validateName(name)) {
+    if (!name) {
+      validationErrors.name = "O campo Nome é obrigatório.";
+    } else if (!validateName(name)) {
       validationErrors.name = "Nome inválido.";
     }
+    
 
-    if (!validatePhone(phone)) {
+    if (!phone) {
+      validationErrors.phone = "O campo Telefone é obrigatório.";
+    } else if (!validatePhone(phone)) {
       validationErrors.phone = "Número inválido.";
     }
 
     if (!email) {
-      validationErrors.email = "O campo email é obrigatório.";
+      validationErrors.email = "O campo E-mail é obrigatório.";
     } else if (!validateEmail(email)) {
-      validationErrors.email =
-        "E-mail inválido.";
+      validationErrors.email = "E-mail inválido.";
     }
 
-    if (!validateUf(uf)) {
-      validationErrors.uf = "Cidade  e Estado inválido.";
+    if (!uf) {
+      validationErrors.uf = "O campo Cidade e Estado é obrigatório.";
+    } else if (!validateUf(uf)) {
+      validationErrors.uf = "Cidade e Estado inválido.";
     }
 
     if (!validateMessage(message)) {
@@ -127,11 +133,12 @@ const WhatsappForm = () => {
     return emailPattern.test(email.trim());
   };
 
-  const validateMessage = (message) => !!message;
-
   const validateUf = (uf) => {
     return uf.trim().length >= 5; // Requer ao menos 5 caracteres para Cidade e Estado
   };
+
+  const validateMessage = (message) => !!message;
+
 
   const formatPhoneNumber = (phoneNumber) => {
     let cleaned = phoneNumber.replace(/\D/g, ""); // Remove tudo que não for número
