@@ -817,6 +817,12 @@ const content = {
         },
       },
     },
+    formandlocation: {
+      miniTag: "",
+      title: "Como funciona nosso atendimento?",
+      subtitle:
+        "Converse com nossa equipe. Estamos prontos para oferecer a orientação jurídica de que você precisa.",
+    },
     links: {
       instagram: `https://www.instagram.com/${infos.instagramProfile}/`,
       tiktok: "https://www.tiktok.com/@marcioassis.adv?_t=ZM-8rlwcwGmzhQ&_r=1",

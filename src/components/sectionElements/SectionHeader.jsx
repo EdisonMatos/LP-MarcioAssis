@@ -9,7 +9,7 @@ export default function SectionHeader({
   miniTitle,
   miniTitleSpace,
   color,
-  miniTitleBgColor,
+  miniTitleBgColor = true, // Valor padrão
   miniTitleTextColor,
   usage,
   type,
@@ -19,18 +19,20 @@ export default function SectionHeader({
   marginBottomOption,
   animation = true,
 }) {
+  // Configurações baseadas na cor
   if (color === "dark") {
-    miniTitleBgColor = "bg-secondary bg-opacity-5";
     miniTitleTextColor = "text-secondary";
     titleColor = "text-bgSectionDark";
     subtitleColor = "text-darker opacity-70";
+    if (miniTitleBgColor) miniTitleBgColor = "bg-secondary bg-opacity-5";
   } else {
-    miniTitleBgColor = "bg-lighter bg-opacity-10";
     miniTitleTextColor = "text-lighter";
     titleColor = "text-lighter";
     subtitleColor = "text-lighter text-opacity-80";
+    if (miniTitleBgColor) miniTitleBgColor = "bg-lighter bg-opacity-10";
   }
 
+  // Configurações baseadas no tipo
   if (type === "article") {
     usage = "w-full flex flex-col";
     miniTitleSpace = "w-full flex-start text-left";
@@ -40,6 +42,11 @@ export default function SectionHeader({
   } else {
     usage = "w-[90%] tablet1:w-[80%] desktop1:w-[60%] max-w-[920px]";
     marginBottomOption = "mb-[26px] tablet1:mb-[40px] desktop1:mb-[72px]";
+  }
+
+  // Remover o background se miniTitleBgColor for false
+  if (!miniTitleBgColor) {
+    miniTitleBgColor = ""; // Sem classe de background
   }
 
   const Content = (
