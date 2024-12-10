@@ -32,30 +32,31 @@ export default function Steps() {
       />
       {/* <SectionShapeDiv shapeDivArrow shapeColor="text-white"/> */}
       <SectionWrapper className="flex flex-col desktop1:flex-row gap-[40px] desktop2:gap-0 desktop1:justify-between">
-        <MotionDivDownToUp className="flex-col w-[100%] py-8 desktop1:w-[415px] desktop2:w-[485px] flex justify-center">
+        <MotionDivDownToUp className="flex-col w-full py-8 desktop1:w-[415px] desktop2:w-[485px] flex justify-center">
           <SectionHeader
-            className="hidden  desktop1:flex"
+            className="hidden desktop1:flex desktop1:w-full text-center"
             // miniTitle={content.texts.formandlocation.miniTag}
             sectionHeaderTitle={content.texts.formandlocation.title}
             sectionHeaderSubtitle={content.texts.formandlocation.subtitle}
             color=""
-            type="article"
+            type=""
             miniTitleBgColor={false}
           />
           <WhatsappForm />
-        </MotionDivDownToUp>
+        </MotionDivDownToUp> 
+        {/* //centralizar textos dos dois sectionheaders */}
 
-        <MotionDivDownToUp className="w-[100%] flex-col desktop1:w-[415px] desktop2:w-[485px] flex justify-center">
+        <MotionDivDownToUp className="w-full flex-col desktop1:w-[415px] desktop2:w-[485px] flex justify-center">
           <SectionHeader
-            className="hidden desktop1:flex"
+            className="hidden desktop1:flex desktop1:w-full text-center"
             // miniTitle={content.texts.formandlocation.miniTag}
             sectionHeaderTitle={content.texts.formandlocation.title}
             sectionHeaderSubtitle={content.texts.formandlocation.subtitle}
             color=""
-            type="article"
+            type=""
             miniTitleBgColor={false}
           />
-          <div className="shadow-custom-opacity shadow-darker/25 relative desktop1:bg-center bg-no-repeat bg-cover h-[350px] w-[90%] tablet1:w-full tablet1:h-[800px] desktop1:h-[467px] rounded-xl">
+          <div className="shadow-custom-opacity shadow-darker/25 relative desktop1:bg-center bg-no-repeat bg-cover h-auto w-full tablet1:w-full rounded-xl">
             {/* <p className="font-bold mt-[32px] mb-[16px]">
               Nos encontre no Google Maps
             </p> */}
@@ -63,12 +64,12 @@ export default function Steps() {
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31496.286939401998!2d-49.4966658!3d-16.6489271!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935e67f49e245171%3A0xe8acb6a48ae5cc5e!2sM%C3%A1rcio%20Assis%20Advogados!5e1!3m2!1spt-BR!2sbr!4v1733161783119!5m2!1spt-BR!2sbr"
                 width="100%"
-                height="470"
+                height=""
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-[10px]"
+                className="rounded-[10px] h-[350px] desktop1:h-[470px]"
               />
             </div>
             {/* <img
