@@ -118,7 +118,7 @@ export default function FooterSocial({ LightMode, addres, obs }) {
               <MotionDivDownToUp>
                 <p className="opacity-90">{content.texts.footer.footerText}</p>
               </MotionDivDownToUp>
-              <MotionDivDownToUp>
+              {/* <MotionDivDownToUp>
                 <p className="font-bold mt-[32px] mb-[16px]">
                   Nos encontre no Google Maps
                 </p>
@@ -133,7 +133,7 @@ export default function FooterSocial({ LightMode, addres, obs }) {
                     referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
-              </MotionDivDownToUp>
+              </MotionDivDownToUp> */}
               {/* Botões de download */}
               {/* <p className="opacity-90">Baixe nosso app:</p>
               <div className="invert">
@@ -172,7 +172,7 @@ export default function FooterSocial({ LightMode, addres, obs }) {
                   <div className="flex gap-[10px] items-center">
                     {/* Instagram icon */}
 
-                    {/* <a
+                    <a
                       href={content.texts.links.instagram}
                       target="_blank"
                       aria-label="Link para o Instagram"
@@ -205,36 +205,32 @@ export default function FooterSocial({ LightMode, addres, obs }) {
                           </svg>
                         }
                       />
-                    </a> */}
+                    </a>
 
                     {/* Instagram icon */}
 
-                    {/* <a
-                      href={content.texts.infos.facebookProfile}
+                    <a
+                      href={content.texts.links.tiktok}
                       target="_blank"
-                      aria-label="Link para o Facebook"
+                      aria-label="Link para o TikTok"
                     >
                       <IconButton
-                        ariaLabel="Botão para o Facebook"
+                        ariaLabel="Botão para o TikTok"
                         icon={
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
+                            x="0px"
+                            y="0px"
                             width="20"
                             height="20"
-                            viewBox="0 0 24 24"
-                            fill=""
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="lucide lucide-facebook"
+                            viewBox="0 0 50 50"
                           >
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            <path d="M41,4H9C6.243,4,4,6.243,4,9v32c0,2.757,2.243,5,5,5h32c2.757,0,5-2.243,5-5V9C46,6.243,43.757,4,41,4z M37.006,22.323 c-0.227,0.021-0.457,0.035-0.69,0.035c-2.623,0-4.928-1.349-6.269-3.388c0,5.349,0,11.435,0,11.537c0,4.709-3.818,8.527-8.527,8.527 s-8.527-3.818-8.527-8.527s3.818-8.527,8.527-8.527c0.178,0,0.352,0.016,0.527,0.027v4.202c-0.175-0.021-0.347-0.053-0.527-0.053 c-2.404,0-4.352,1.948-4.352,4.352s1.948,4.352,4.352,4.352s4.527-1.894,4.527-4.298c0-0.095,0.042-19.594,0.042-19.594h4.016 c0.378,3.591,3.277,6.425,6.901,6.685V22.323z"></path>
                           </svg>
                         }
                       />
                     </a>
-                    <a
+                    {/* <a
                       href={content.texts.infos.linkedInProfile}
                       target="_blank"
                     >
