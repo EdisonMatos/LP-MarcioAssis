@@ -817,11 +817,16 @@ const content = {
         },
       },
     },
-    formandlocation: {
+    contactForm: {
       miniTag: "",
-      title: "Como funciona nosso atendimento?",
+      title: "Fale conosco",
+      subtitle: "Nos envie uma mensagem e te responderemos em breve.",
+    },
+    maps: {
+      miniTag: "",
+      title: "Como nos encontrar?",
       subtitle:
-        "Converse com nossa equipe. Estamos prontos para oferecer a orientação jurídica de que você precisa.",
+        "Utilize o mapa abaixo para chegar até nós com mais facilidade.",
     },
     links: {
       instagram: `https://www.instagram.com/${infos.instagramProfile}/`,

@@ -29,10 +29,10 @@ export default function Index() {
       <AboutInstagram />
       <Cta />
       <Steps />
-      <FormAndLocation/>
+      <FormAndLocation />
       <Faq />
       <FooterSocial obs={true} addres={true} />
-      <FloatingWhatsappButton buttonType="form" />
+      <FloatingWhatsappButton />
       <BackToTopButton />
     </div>
   );

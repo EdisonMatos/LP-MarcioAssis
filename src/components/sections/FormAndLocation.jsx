@@ -22,41 +22,41 @@ export default function Steps() {
   const [modalTitle, setModalTitle] = useState("");
 
   return (
-    <SectionArea className="bg-bgSectionDark " paddingtop={true}>
-      <SectionHeader
+    <SectionArea className="bg-bgSectionDark " paddingtop={false}>
+      {/* <SectionHeader
         className="text-center"
         miniTitle={content.texts.features.miniTag}
         sectionHeaderTitle={content.texts.features.title}
         sectionHeaderSubtitle={content.texts.features.subtitle}
         color=""
-      />
+      /> */}
       {/* <SectionShapeDiv shapeDivArrow shapeColor="text-white"/> */}
-      <SectionWrapper className="flex flex-col desktop1:flex-row-reverse gap-[40px] desktop2:gap-0 desktop1:justify-between">
-        <MotionDivDownToUp className="flex-col w-full py-8 desktop1:w-[415px] desktop2:w-[485px] flex justify-center items-center">
+      <SectionWrapper className="flex flex-col desktop1:flex-row-reverse gap-[40px] desktop2:gap-0 desktop1:justify-between  desktop1:items-start">
+        <MotionDivDownToUp className="flex-col w-full desktop1:w-[415px] desktop2:w-[485px] flex justify-center items-center ">
           <SectionHeader
-            className="hidden desktop1:flex desktop1:w-full text-center"
+            className="text-center desktop1:flex desktop1:w-full"
             // miniTitle={content.texts.formandlocation.miniTag}
-            sectionHeaderTitle={content.texts.formandlocation.title}
-            sectionHeaderSubtitle={content.texts.formandlocation.subtitle}
+            sectionHeaderTitle={content.texts.contactForm.title}
+            sectionHeaderSubtitle={content.texts.contactForm.subtitle}
             color=""
             type=""
             miniTitleBgColor={false}
           />
           <WhatsappForm />
-        </MotionDivDownToUp> 
+        </MotionDivDownToUp>
         {/* //centralizar textos dos dois sectionheaders */}
 
         <MotionDivDownToUp className="w-full flex-col desktop1:w-[415px] desktop2:w-[485px] flex justify-center">
           <SectionHeader
-            className="hidden desktop1:flex desktop1:w-full text-center"
+            className="text-center desktop1:flex desktop1:w-full"
             // miniTitle={content.texts.formandlocation.miniTag}
-            sectionHeaderTitle={content.texts.formandlocation.title}
-            sectionHeaderSubtitle={content.texts.formandlocation.subtitle}
+            sectionHeaderTitle={content.texts.maps.title}
+            sectionHeaderSubtitle={content.texts.maps.subtitle}
             color=""
             type=""
             miniTitleBgColor={false}
           />
-          <div className="shadow-custom-opacity shadow-darker/25 relative desktop1:bg-center bg-no-repeat bg-cover h-auto w-full tablet1:w-full rounded-xl">
+          <div className="relative w-full h-auto bg-no-repeat bg-cover shadow-custom-opacity shadow-darker/25 desktop1:bg-center tablet1:w-full rounded-xl">
             {/* <p className="font-bold mt-[32px] mb-[16px]">
               Nos encontre no Google Maps
             </p> */}
@@ -69,7 +69,7 @@ export default function Steps() {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-[10px] h-[350px] desktop1:h-[470px]"
+                className="rounded-[10px] h-[350px] desktop1:h-[420px]"
               />
             </div>
             {/* <img
