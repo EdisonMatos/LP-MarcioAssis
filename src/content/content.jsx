@@ -817,6 +817,17 @@ const content = {
         },
       },
     },
+    contactForm: {
+      miniTag: "",
+      title: "Fale conosco",
+      subtitle: "Nos envie uma mensagem e te responderemos em breve.",
+    },
+    maps: {
+      miniTag: "",
+      title: "Como nos encontrar?",
+      subtitle:
+        "Utilize o mapa abaixo para chegar até nós com mais facilidade.",
+    },
     links: {
       instagram: `https://www.instagram.com/${infos.instagramProfile}/`,
       tiktok: "https://www.tiktok.com/@marcioassis.adv?_t=ZM-8rlwcwGmzhQ&_r=1",

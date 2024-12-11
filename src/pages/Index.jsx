@@ -7,6 +7,7 @@ import Cta from "../components/sections/Cta";
 import Steps from "../components/sections/Steps";
 import Faq from "../components/sections/Faq";
 import FooterSocial from "../components/sections/FooterSocial";
+import FormAndLocation from "../components/sections/FormAndLocation";
 
 import FloatingWhatsappButton from "../components/interactives/FloatingWhatsappButton";
 import BackToTopButton from "../components/interactives/BackToTopButton";
@@ -28,9 +29,10 @@ export default function Index() {
       <AboutInstagram />
       <Cta />
       <Steps />
+      <FormAndLocation />
       <Faq />
       <FooterSocial obs={true} addres={true} />
-      <FloatingWhatsappButton buttonType="form" />
+      <FloatingWhatsappButton />
       <BackToTopButton />
     </div>
   );

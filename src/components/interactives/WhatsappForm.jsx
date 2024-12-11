@@ -43,23 +43,28 @@ const WhatsappForm = () => {
 
     const validationErrors = {};
 
-    if (!validateName(name)) {
+    if (!name) {
+      validationErrors.name = "O campo Nome é obrigatório.";
+    } else if (!validateName(name)) {
       validationErrors.name = "Nome inválido.";
     }
 
-    if (!validatePhone(phone)) {
+    if (!phone) {
+      validationErrors.phone = "O campo Telefone é obrigatório.";
+    } else if (!validatePhone(phone)) {
       validationErrors.phone = "Número inválido.";
     }
 
     if (!email) {
-      validationErrors.email = "O campo email é obrigatório.";
+      validationErrors.email = "O campo E-mail é obrigatório.";
     } else if (!validateEmail(email)) {
-      validationErrors.email =
-        "E-mail inválido.";
+      validationErrors.email = "E-mail inválido.";
     }
 
-    if (!validateUf(uf)) {
-      validationErrors.uf = "Cidade  e Estado inválido.";
+    if (!uf) {
+      validationErrors.uf = "O campo Cidade e Estado é obrigatório.";
+    } else if (!validateUf(uf)) {
+      validationErrors.uf = "Cidade e Estado inválido.";
     }
 
     if (!validateMessage(message)) {
@@ -127,11 +132,11 @@ const WhatsappForm = () => {
     return emailPattern.test(email.trim());
   };
 
-  const validateMessage = (message) => !!message;
-
   const validateUf = (uf) => {
     return uf.trim().length >= 5; // Requer ao menos 5 caracteres para Cidade e Estado
   };
+
+  const validateMessage = (message) => !!message;
 
   const formatPhoneNumber = (phoneNumber) => {
     let cleaned = phoneNumber.replace(/\D/g, ""); // Remove tudo que não for número
@@ -153,12 +158,12 @@ const WhatsappForm = () => {
   };
 
   return (
-    <div>
-      <div className="w-full text-paragraph3 phone3:text-paragraph4">
-        <h1 className="w-full mb-2 font-medium">Fale conosco</h1>
+    <div className=" bg-[#0E2B40] p-6 rounded-[10px] w-full desktop1:w-[90%] h-auto">
+      <div className="w-full text-paragraph3 phone3:text-paragraph4 ">
+        {/* <h1 className="w-full mb-2 font-medium text-white">Fale conosco</h1> */}
         {/* Nome */}
         <div className="mb-2">
-          <div className="flex mb-2 tablet1:mb-3 text-gray-500">
+          <div className="flex mb-2 text-gray-500 tablet1:mb-6">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiUser />
             </div>
@@ -176,7 +181,7 @@ const WhatsappForm = () => {
         </div>
         {/* Telefone */}
         <div className="mb-2">
-          <div className="flex mb-2 tablet1:mb-3 text-gray-500">
+          <div className="flex mb-2 text-gray-500 tablet1:mb-6">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiPhone />
             </div>
@@ -194,7 +199,7 @@ const WhatsappForm = () => {
         </div>
         {/* Email */}
         <div className="mb-2">
-          <div className="flex mb-2 tablet1:mb-3 text-gray-500">
+          <div className="flex mb-2 text-gray-500 tablet1:mb-6">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiMail />
             </div>
@@ -212,7 +217,7 @@ const WhatsappForm = () => {
         </div>
         {/* Cidade/Estado */}
         <div className="mb-2">
-          <div className="flex mb-2 tablet1:mb-3 text-gray-500">
+          <div className="flex mb-2 text-gray-500 tablet1:mb-6">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiGlobe />
             </div>
@@ -230,7 +235,7 @@ const WhatsappForm = () => {
         </div>
         {/* Mensagem */}
         <div className="mb-2">
-          <div className="flex mb-2 tablet1:mb-3 text-gray-500">
+          <div className="flex mb-2 text-gray-500 tablet1:mb-6">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiChat1 />
             </div>
@@ -248,14 +253,14 @@ const WhatsappForm = () => {
         {/* Botão */}
         <button
           type="button"
-          className="flex items-center w-full font-medium text-white bg-[#075E54] rounded-lg h-10 phone2:h-12 hover:bg-secondary"
+          className="flex items-center w-full font-medium text-[#0E2B40] bg-primary transition-all rounded-lg h-10 phone2:h-12 hover:scale-105"
           onClick={sendToWhatsapp}
           disabled={isSubmitting}
         >
           <div className="flex items-center justify-center w-full">
             <img
               src={WhatsAppIcon}
-              className="w-6 h-6 phone2:w-8 phone2:h-8 mr-2"
+              className="w-6 h-6 mr-2 phone2:w-8 phone2:h-8"
               alt="WhatsApp Icon"
             />
             <p>{isSubmitting ? "Enviando..." : "Enviar mensagem"}</p>
