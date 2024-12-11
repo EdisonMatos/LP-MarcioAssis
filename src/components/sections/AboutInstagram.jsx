@@ -139,7 +139,7 @@ export default function AboutInstagram() {
 
           <MotionDivDownToUp>
             <Button
-              label="Siga-me no Instagram"
+              label="Siga-nos no Instagram"
               buttonLink={content.texts.links.instagram}
               icon={
                 <svg
@@ -164,7 +164,7 @@ export default function AboutInstagram() {
 
           <MotionDivDownToUp className="mt-[18px]">
             <Button
-              label="Siga-me no TikTok"
+              label="Siga-nos no TikTok"
               buttonLink={content.texts.links.tiktok}
               icon={
                 <svg
