@@ -162,8 +162,8 @@ const WhatsappForm = () => {
       <div className="w-full text-paragraph3 phone3:text-paragraph4 ">
         {/* <h1 className="w-full mb-2 font-medium text-white">Fale conosco</h1> */}
         {/* Nome */}
-        <div className="mb-2">
-          <div className="flex mb-2 text-gray-500 tablet1:mb-6">
+        <div className="mb-6">
+          <div className="flex mb-2 text-gray-500 tablet1:mb-0">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiUser />
             </div>
@@ -180,8 +180,8 @@ const WhatsappForm = () => {
           {errors.name && <p className="text-red-500">{errors.name}</p>}
         </div>
         {/* Telefone */}
-        <div className="mb-2">
-          <div className="flex mb-2 text-gray-500 tablet1:mb-6">
+        <div className="mb-6">
+          <div className="flex mb-2 text-gray-500 tablet1:mb-0">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiPhone />
             </div>
@@ -198,8 +198,8 @@ const WhatsappForm = () => {
           {errors.phone && <p className="text-red-500">{errors.phone}</p>}
         </div>
         {/* Email */}
-        <div className="mb-2">
-          <div className="flex mb-2 text-gray-500 tablet1:mb-6">
+        <div className="mb-6">
+          <div className="flex mb-2 text-gray-500 tablet1:mb-0">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiMail />
             </div>
@@ -216,8 +216,8 @@ const WhatsappForm = () => {
           {errors.email && <p className="text-red-500">{errors.email}</p>}
         </div>
         {/* Cidade/Estado */}
-        <div className="mb-2">
-          <div className="flex mb-2 text-gray-500 tablet1:mb-6">
+        <div className="mb-6">
+          <div className="flex mb-2 text-gray-500 tablet1:mb-0">
             <div className="flex items-center justify-center w-12 px-1 bg-white">
               <CiGlobe />
             </div>
@@ -234,13 +234,13 @@ const WhatsappForm = () => {
           {errors.uf && <p className="text-red-500">{errors.uf}</p>}
         </div>
         {/* Mensagem */}
-        <div className="mb-2">
-          <div className="flex mb-2 text-gray-500 tablet1:mb-6">
-            <div className="flex items-center justify-center w-12 px-1 bg-white">
-              <CiChat1 />
+        <div className="mb-6">
+          <div className="flex mb-2 text-gray-500 tablet1:mb-0">
+            <div className="flex items-start justify-center w-12 px-1 bg-white">
+              <CiChat1 className="mt-[14px]" />
             </div>
             <textarea
-              className="w-full px-1 py-0 border-0 rounded-none"
+              className="w-full px-1 py-2 border-0 rounded-none"
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
