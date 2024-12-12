@@ -67,8 +67,9 @@ export const infos = {
   endereco: (
     <div>
       <p>Endereço:</p>
-      <p>Rua nº 46, nº 95, Qd. B, Lt. 10, Sala nº 07</p>
-      <p>Setor Carvelo, Trindade - Goiás</p>
+      <p>Rua nº 46, nº 95</p>
+      <p>Quadra B, Lote 10, Sala nº 07</p>
+      <p>Setor Carvelo, Trindade-Goiás</p>
       <p>CEP 75.388-603</p>
     </div>
   ),
